@@ -1,24 +1,122 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html>
     <head>
         <title>Don't Be Stupid, Grasp Solid</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="assets/js/jquery.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.tools.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.hashchange.js"></script>
         <script type="text/javascript" src="assets/js/markdown.js"></script>
+        <script type="text/javascript" src="assets/js/prettify.js"></script>
+
+
+
         <script type="text/javascript" src="assets/js/slides.js"></script>
+        <link href="assets/css/master.css" rel="stylesheet" type="text/css"></link>
+        <link href="assets/css/prettify.css" rel="stylesheet" type="text/css"></link>
+
     </head>
     <body>
-        <ol id="slides">
-            <li class="markdown">
-                *foo bar* **baz**
-            </li>
-            <li>
-                
-            </li>
-        </ol>
+        <div class="window">
+            <div class="slider">
+                <div class="markdown title">
+                    Don't Be STUPID
+                    ===============
+                    Grasp SOLID
+                    ===========
+                                        
+                    ##### And Other Principles of 
+                    ##### Object Oriented Design
+                </div>
+                <div class="markdown List">
+                    ## What Is A Paradigm
+                    * Where is state stored?
+                        * Variables?
+                        * Objects?
+                        * No State?
+                    * How is state passed?
+                        * Side Effects / Global?
+                        * Objects?
+                        * ...
+                    * How is state modified?
+                        * Step By Step?
+                        * Actions On State?
+                        * ...
+                </div>
+                <div class="markdown List">
+                    ## Procedural Programming
+                    * State Is Stored In Variables
+                            
+                            $foo = 123;
+                    * State Is Shared
+
+                            sort($array);
+                    * State Is Modified Directly
+
+                            $foo = $foo + 1;
+                </div>
+                <div class="markdown List">
+                    ## Functional Programming
+                    * There Is No State
+                            
+                            function foo($foo)
+                    * Execution Is Deterministic
+
+                            foo(123);
+                    * State Is Never Modified
+
+                            foo($foo + 1)
+                </div>
+                <div class="markdown List">
+                    ## Object Oriented Programming
+                    * State Is Stored By Objects
+                            
+                            new Class($initialState)
+                    * State Is Passed By Objects
+
+                            $object1->foo($object2);
+                    * State Is Modified Via Methods
+
+                            $object->doSomething();
+                </div>
+
+
+
+                <div class="Paradigms">
+                    <canvas id="paradigms" width="1200" height=900"></canvas>
+                </div>
+                <div class="stupid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd>ingletons</dd>
+                        <dt>T</dt>
+                        <dd>ight Coupling</dd>
+                        <dt>U</dt>
+                        <dd>ntestable Code</dd>
+                        <dt>P</dt>
+                        <dd>remature Optimization</dd>
+                        <dt>I</dt>
+                        <dd>ndescriptive Naming</dd>
+                        <dt>D</dt>
+                        <dd>uplication</dd>
+                    </dl>
+                </div>
+                <div class="solid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd>ingle Responsibility Principle</dd>
+                        <dt>O</dt>
+                        <dd>pen/Closed Principle</dd>
+                        <dt>L</dt>
+                        <dd>iskov Substitution Principle</dd>
+                        <dt>I</dt>
+                        <dd>nterface Segregation Principle</dd>
+                        <dt>D</dt>
+                        <dd>ependency Inversion Principle</dd>
+                    </dl>
+                </div>
+
+            </div>
+        </div>
     </body>
 </html>
