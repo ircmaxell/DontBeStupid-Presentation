@@ -79,11 +79,223 @@
 
                             $object->doSomething();
                 </div>
-
-
-
                 <div class="Paradigms">
                     <canvas id="paradigms" width="1200" height=900"></canvas>
+                </div>
+                <div class="stupid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd class="show">ingletons</dd>
+                        <dt>T</dt>
+                        <dt>U</dt>
+                        <dt>P</dt>
+                        <dt>I</dt>
+                        <dt>D</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Singletons
+                    * What Is a Singleton?
+                        * Global State
+                        * Static Coupling
+                        * Hard-Coded Dependency
+                        * Spooky Action At A Distance
+                    * But I Only Want One Instance!
+                        * So, Only Call **new** Once
+                        * And you only want one now...
+                    * But All My Classes Need It
+                        * Inject As A Dependency
+                    * Singletons Are Not OOP!
+                        * They are a COP construct
+                </div>
+                <div class="markdown codeblock">
+                    ## Singletons (ctd)
+                    
+                        class Foo {
+                            private static $instance;
+                            private function __construct() {}
+                            public static function getInstance() {
+                                //...
+                            }
+                        }
+                        class Bar {
+                            protected $foo;
+                            public function __construct() {
+                                $this->foo = Foo::getInstance();
+                            }
+                        }
+                </div>
+                <div class="markdown codeblock">
+                    ## Singletons (ctd)
+                    
+                        class Foo {
+                        }
+                        class Bar {
+                            protected $foo;
+                            public function __construct(Foo $foo) {
+                                $this->foo = $foo
+                            }
+                        }
+                </div>
+                <div class="stupid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd>ingletons</dd>
+                        <dt>T</dt>
+                        <dd class="show">ight Coupling</dd>
+                        <dt>U</dt>
+                        <dt>P</dt>
+                        <dt>I</dt>
+                        <dt>D</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Tight Coupling
+                </div>
+                <div class="markdown codeblock">
+                    ## Tight Coupling (ctd)
+                    
+                        class Foo {
+                        }
+                        class Bar {
+                            protected $foo;
+                            public function __construct(Foo $foo) {
+                                $this->foo = $foo
+                            }
+                        }
+                </div>
+                <div class="markdown codeblock">
+                    ## Tight Coupling (ctd)
+                    
+                        interface doFoo {
+                        }
+                        class Foo implements doFoo {
+                        }
+                        class Bar {
+                            protected $foo;
+                            public function __construct(doFoo $foo)
+                            {
+                                $this->foo = $foo
+                            }
+                        }
+                </div>
+                <div class="stupid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd>ingletons</dd>
+                        <dt>T</dt>
+                        <dd>ight Coupling</dd>
+                        <dt>U</dt>
+                        <dd class="show">ntestable Code</dd>
+                        <dt>P</dt>
+                        <dt>I</dt>
+                        <dt>D</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Untestable Code
+                </div>
+                <div class="markdown codeblock">
+                    ## Untestable Code (ctd)
+                    
+                        class Foo {
+                        }
+                        class Bar {
+                            public function doSomething() {
+                                Foo::getInstance()->doBar();
+                            }
+                        }
+                </div>
+                <div class="markdown codeblock">
+                    ## Untestable Code (ctd)
+                    
+                        class Foo {
+                        }
+                        class Bar {
+                            public function doSomething(Foo $foo) {
+                                $foo->doBar();
+                            }
+                        }
+                </div>
+                <div class="stupid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd>ingletons</dd>
+                        <dt>T</dt>
+                        <dd>ight Coupling</dd>
+                        <dt>U</dt>
+                        <dd>ntestable Code</dd>
+                        <dt>P</dt>
+                        <dd class="show">remature Optimization</dd>
+                        <dt>I</dt>
+                        <dt>D</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Premature Optimization
+                </div>
+                <div class="markdown codeblock">
+                    ## Premature Optimization (ctd)
+                    
+                        class Bar {
+                            public function doStuff(array $array) {
+                                $i = 0;
+                                foreach ($array as &$value) {
+                                    $i++;
+                                }
+                                return $i;
+                            }
+                        }
+                </div>
+                <div class="stupid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd>ingletons</dd>
+                        <dt>T</dt>
+                        <dd>ight Coupling</dd>
+                        <dt>U</dt>
+                        <dd>ntestable Code</dd>
+                        <dt>P</dt>
+                        <dd>remature Optimization</dd>
+                        <dt>I</dt>
+                        <dd class="show">ndescriptive Naming</dd>
+                        <dt>D</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Indescriptive Naming
+                </div>
+                <div class="markdown codeblock">
+                    ## Indescriptive Naming (ctd)
+                    
+                        class Bar {
+                        
+                            protected $a;
+                            
+                            public function __construct(Foo $a) {
+                                $this->a = $a;
+                            }
+                            
+                            public function doStuff() {
+                                $this->a->doSomethingElse();
+                            }
+                        }
+                </div>
+                <div class="markdown codeblock">
+                    ## Indescriptive Naming (ctd)
+                    
+                        class FileProxy {
+                        
+                            protected $file;
+                            
+                            public function __construct(File $file) {
+                                $this->file = $file;
+                            }
+                            
+                            public function delete() {
+                                $this->file->remove();
+                            }
+                        }
                 </div>
                 <div class="stupid Letters">
                     <dl>
@@ -98,8 +310,103 @@
                         <dt>I</dt>
                         <dd>ndescriptive Naming</dd>
                         <dt>D</dt>
-                        <dd>uplication</dd>
+                        <dd class="show">uplication</dd>
                     </dl>
+                </div>
+                <div class="markdown List">
+                    ## Duplication
+                </div>
+                <div class="markdown codeblock">
+                    ## Duplication (ctd)
+                    
+                        class Bar {
+                        
+                            public function findByName($name) {
+                                $sql = 'SELECT * 
+                                    FROM bar 
+                                    WHERE name = ?';
+                            }
+                            public function findById($id) {
+                                $sql = 'SELECT * 
+                                    FROM bar 
+                                    WHERE id = ?';
+                            }
+                        }
+                </div>
+                <div class="markdown codeblock">
+                    ## Duplication (ctd)
+                    
+                        class Bar {
+                        
+                            public function findByName($name) {
+                                $this->findBy('name', $name);
+                            }
+                            public function findById($id) {
+                                $this->findBy('id', $id);
+                            }
+                        }
+                </div>
+                <div class="markdown title">
+                    Don't Be Stupid
+                    ===============
+                </div>
+                <div class="solid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd class="show">ingle Responsibility Principle</dd>
+                        <dt>O</dt>
+                        <dt>L</dt>
+                        <dt>I</dt>
+                        <dt>D</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Single Responsibility Principle
+                </div>
+                <div class="solid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd>ingle Responsibility Principle</dd>
+                        <dt>O</dt>
+                        <dd class="show">pen/Closed Principle</dd>
+                        <dt>L</dt>
+                        <dt>I</dt>
+                        <dt>D</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Open / Closed Principle
+                </div>
+                <div class="solid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd>ingle Responsibility Principle</dd>
+                        <dt>O</dt>
+                        <dd>pen/Closed Principle</dd>
+                        <dt>L</dt>
+                        <dd class="show">iskov Substitution Principle</dd>
+                        <dt>I</dt>
+                        <dt>D</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Liskov Substitution Principle
+                </div>
+                <div class="solid Letters">
+                    <dl>
+                        <dt>S</dt>
+                        <dd>ingle Responsibility Principle</dd>
+                        <dt>O</dt>
+                        <dd>pen/Closed Principle</dd>
+                        <dt>L</dt>
+                        <dd>iskov Substitution Principle</dd>
+                        <dt>I</dt>
+                        <dd class="show">nterface Segregation Principle</dd>
+                        <dt>D</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Interface Segregation Principle
                 </div>
                 <div class="solid Letters">
                     <dl>
@@ -112,10 +419,136 @@
                         <dt>I</dt>
                         <dd>nterface Segregation Principle</dd>
                         <dt>D</dt>
-                        <dd>ependency Inversion Principle</dd>
+                        <dd class="show">ependency Inversion Principle</dd>
                     </dl>
                 </div>
-
+                <div class="markdown List">
+                    ## Dependency Inversion Principle
+                </div>
+                <div class="dull Letters">
+                    <dl>
+                        <dt>D</dt>
+                        <dd class="show">eep Inheritance</dd>
+                        <dt>U</dt>
+                        <dt>L</dt>
+                        <dt>L</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Deep Inheritance
+                </div>
+                <div class="dull Letters">
+                    <dl>
+                        <dt>D</dt>
+                        <dd>eep Inheritance</dd>
+                        <dt>U</dt>
+                        <dd class="show">nclear Magic</dd>
+                        <dt>L</dt>
+                        <dt>L</dt>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Unclear Magic
+                </div>
+                <div class="dull Letters">
+                    <dl>
+                        <dt>D</dt>
+                        <dd>eep Inheritance</dd>
+                        <dt>U</dt>
+                        <dd>nclear Magic</dd>
+                        <dt>L</dt>
+                        <dd class="show">eaky Abstractions</dd>
+                        <dt>L</dt>
+                    </dl>
+                </div>
+                <div>
+                    <img src="assets/images/camaro.jpg" class="full" />
+                </div>
+                <div>
+                    <img src="assets/images/brake_pedal.jpg" class="full" />
+                </div>
+                <div class="markdown List">
+                    ## Leaky Abstractions    
+                    * They Are Everywhere
+                        * Database Connections
+                        * File-systems
+                        * Floating Point Numbers
+                        * Fixed-Size Integers (64 bit)
+                    * They Are Impossible To Avoid
+                        * All Abstractions Leak
+                        * Leaks Are Technical Debt
+                        * Fix Leakage When Found
+                    * Maintain The Abstraction
+                        * Capture Exceptions
+                        * Check For Side-effects
+                </div>
+                <div class="markdown leak List">
+                    ## Leaky Abstractions (ctd)
+                    * Leaky:
+                    
+                            try {
+                                $mapper->loadPerson(1);
+                            } catch (DatabaseQueryException $e) {
+                                /* Woah!
+                                   What Does The DB have to do
+                                   With Anything???
+                                */
+                            }
+                </div>
+                <div class="markdown leak List">
+                    ## Leaky Abstractions (ctd)
+                    * Better:
+                    
+                            try {
+                                $mapper->loadPerson(1);
+                            } catch (RecordNotFoundException $e) {
+                                /* Eih!
+                                  A Person My Be A Record
+                                  But If It's A First-Class
+                                  Object, Why Leak The Record
+                                  Part???
+                                */
+                            }
+                </div>
+                <div class="markdown leak List">
+                    ## Leaky Abstractions (ctd)
+                    * Better Still:
+                    
+                            try {
+                                $mapper->loadPerson(1);
+                            } catch (PersonNotFoundException $e) {
+                                /* I Get It!
+                                    The Person Wasn't Found!
+                                    It All Makes Sense!
+                                */
+                            }
+                </div>
+                <div class="dull Letters">
+                    <dl>
+                        <dt>D</dt>
+                        <dd>eep Inheritance</dd>
+                        <dt>U</dt>
+                        <dd>nclear Magic</dd>
+                        <dt>L</dt>
+                        <dd>eaky Abstractions</dd>
+                        <dt>L</dt>
+                        <dd class="show">ayer Crossing</dd>
+                    </dl>
+                </div>
+                <div class="markdown List">
+                    ## Layer Crossing
+                </div>
+                <div class="markdown List comments">
+                    1. Questions?
+                    2. Comments?
+                    3. Snide Remarks?
+                </div>
+                <div class="markdown credits">
+                    ## Anthony Ferrara
+                    ## @ircmaxell
+                    ## blog.ircmaxell.com
+                    ## me@ircmaxell.com
+                </div>
             </div>
         </div>
     </body>

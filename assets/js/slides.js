@@ -27,7 +27,7 @@
         $.extend(this, {
             goToPage: function(page) {
                 if (page < 1 || page > pages) return;
-                var offset = -1 * $('div.slider div').width() * (page - 1) - 1;
+                var offset = -1 * $('div.slider div').width() * (page - 1) + 1;
                 $('div.slider').animate({left: offset}, 1000);
                 currentPage = page;
                 window.location.hash = currentPage;
@@ -68,12 +68,12 @@
     }
 
     slideClasses.Letters = function(el) {
-        var count = $(el).find('dt').length;
+        var count = $(el).find('dd.show').length;
         var currentItem = 0;
         $.extend(this, {
             next: function() { 
                 if (currentItem >= count) return false;
-                var item = $(el).find('dd').get(currentItem);
+                var item = $(el).find('dd.show').get(currentItem);
                 $(item).css({display: 'block', opacity:0}).animate({opacity: 1}, 1000);
                 currentItem += 1;
                 return true;
@@ -257,7 +257,7 @@
         });
 
         $('div.slider div').each(function() {
-            var classes = $(this).attr('class').split(/\s+/);
+            var classes = ($(this).attr('class') || '').split(/\s+/);
             var found = false;
             for (var i = 0; i < classes.length; i++) {
                 if (slideClasses[classes[i]]) {
@@ -280,10 +280,10 @@
 
         var resize = function() {
             var min = Math.min($(window).height() * 4/3, $(window).width());
-            $('div.window, div.slider div').height(min * 3 / 4).width(min);
-            var fontSize = (Math.min($(window).height()*4/3, $(window).width()) / 480) * 80;
+            $('div.window, div.slider div').height(Math.floor(min * 3 / 4)).width(Math.floor(min));
+            var fontSize = Math.floor((Math.min($(window).height()*4/3, $(window).width()) / 480) * 80);
             $('body').css('font-size', fontSize + '%');
-            ss.resize(min, min * 3 / 4);
+            ss.resize(Math.floor(min), Math.floor(min * 3 / 4));
         };
         $(window).resize(resize);
         resize();
