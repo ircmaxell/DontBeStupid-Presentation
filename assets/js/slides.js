@@ -3,7 +3,13 @@
     var slides = [];
     var slideClasses = {};
 
-    var Slide = function(element) {
+    var inherit = function(func, parent) {
+        func.prototype = new parent;
+        func.prototype.constructor = func;
+        return func;
+    }
+
+    var Slide = function() {
         $.extend(this, {
             next: function() {
                 return false;
@@ -11,26 +17,29 @@
             prev: function() {
                 return false;
             },
-            resize: function(width, height) {
+            resize: function() {
             }
         });
     }
 
-    var slideshow = function(slides) {
+    var Slideshow = function(slides) {
         var currentPage = 1,
-            self = this,
-            pages = slides.length;
-        $('body').click(function(e) {
+        self = this,
+        pages = slides.length;
+        $('.pagination select').change(function(e) {
+            self.goToPage(this.selectedIndex + 1);
+        }).click(function(e) {
             e.preventDefault();
-            self.next();
+            e.stopPropagation();
         });
         $.extend(this, {
             goToPage: function(page) {
                 if (page < 1 || page > pages) return;
-                var offset = -1 * $('div.slider div').width() * (page - 1) + 1;
-                $('div.slider').animate({left: offset}, 1000);
+                var offset = -1 * $('div.slider div').width() * (page - 1);
+                $('div.slider').css('left', offset);
                 currentPage = page;
                 window.location.hash = currentPage;
+                $('.pagination select')[0].selectedIndex = currentPage - 1;
             },
             next: function() {
                 if (!slides[currentPage - 1].next()) {
@@ -42,54 +51,71 @@
                     this.goToPage(currentPage - 1);
                 }
             },
-            resize: function() {
-                $('div.slider').css({left:(-1 * $('div.slider div').width() * (currentPage - 1))});
+            resize: function(width, height) {
+                $('div.slider').css({
+                    left:(-1 * width * (currentPage - 1))
+                });
                 $.each(slides, function(idx, slide) { 
-                    slide.resize($(window).width(), $(window).height());
+                    slide.resize(width, height);
+                });
+                $('div.slider').css({
+                    'width': width * pages
+                });
+                $('.pagination').css({
+                    right: $(window).width() - $('div.window').offset().left - width
                 });
             }
         });
     }
 
-    slideClasses.List = function(el) {
-        var count = $(el).find('li').length;
-        var currentItem = 0;
+    var Appear = inherit(function() {
         $.extend(this, {
-            next: function() {  
-                if (currentItem >= count) return false;
-                var item = $(el).find('li').get(currentItem);
-                $(item).css({display: 'list-item', opacity:0}).animate({opacity: 1}, 1000);
-                currentItem += 1;
+            next: function() {
+                if (this.currentItem >= this.count) return false;
+                $($(this.element).find(this.selector).get(this.currentItem)).css(this.startCss).animate(this.endCss, 1000);
+                this.currentItem += 1;
                 return true;
-            },
-            prev: function() { return false; },
-            resize: function(w, h) {}
+            }
         });
-    }
+    }, Slide);
 
-    slideClasses.Letters = function(el) {
-        var count = $(el).find('dd.show').length;
-        var currentItem = 0;
+    slideClasses.List = inherit(function(el) {
         $.extend(this, {
-            next: function() { 
-                if (currentItem >= count) return false;
-                var item = $(el).find('dd.show').get(currentItem);
-                $(item).css({display: 'block', opacity:0}).animate({opacity: 1}, 1000);
-                currentItem += 1;
-                return true;
+            count: $(el).find('li').length,
+            currentItem: 0,
+            element: el,
+            selector: 'li',
+            startCss: {
+                display: 'list-item',
+                opacity: 0
             },
-            prev: function() { return false; },
-            resize: function(w, h) {}
+            endCss: {
+                opacity: 1
+            }
         });
-    }
+    }, Appear);
 
-    slideClasses.Paradigms = function(el) {
-        var canvas = $(el).find('canvas')[0];
-        var self = this,
-            client = {width: 0, height: 0, offset: 0, center: {x:0,y:0}, scale: {x:0, y:0}},
-            currentStep = 0,
-            ctx = canvas.getContext('2d'),
-            offset = $(canvas).offset();
+    slideClasses.Letters = inherit(function(el) {
+        $.extend(this, {
+            count: $(el).find('dd.show').length,
+            currentItem: 0,
+            element: el,
+            selector: 'dd.show',
+            startCss: {
+                display: 'block',
+                opacity: 0
+            },
+            endCss: {
+                opacity: 1
+            }
+        });
+    }, Appear);
+
+    slideClasses.Paradigms = inherit(function(el) {
+        var canvas = $(el).find('canvas')[0],
+        self = this,
+        currentStep = 0,
+        ctx = canvas.getContext('2d');
     
         $(canvas).attr('width', 1200).attr('height', 900);
 
@@ -98,7 +124,10 @@
         $.extend(this, {
             resize: function(width, height) {
                 var min = Math.min(width, height);
-                $(canvas).css({width: min * 4 / 3, height: min});
+                $(canvas).css({
+                    width: min * 4 / 3,
+                    height: min
+                });
             },
             step1: function() {
                 ctx.strokeStyle = '#FFFFFF';
@@ -111,9 +140,9 @@
                 ctx.fillText("Object Oriented Programming", 600, 180);
             },
             step2: function() {
-                   ctx.strokeStyle = '#FFFFFF';
+                ctx.strokeStyle = '#FFFFFF';
                 ctx.fillStyle = '#FFFFFF';
-                   ctx.beginPath();
+                ctx.beginPath();
                 ctx.arc(859, 650, 10, 0, 2 * Math.PI, true);
                 ctx.closePath();
                 ctx.fill();
@@ -241,15 +270,10 @@
                 } else {
                     return false;
                 }
-            },
-            prev: function() {
-                return false;
             }
         });
-        this.resize($(el).width(), $(el).height());
+    }, Slide);
 
-    }
-    
     $(function() {
         $('.markdown').each(function() {
             var html = converter.makeHtml(normalize($(this).text())).replace(/>\s+</g, "><");
@@ -263,51 +287,58 @@
                 if (slideClasses[classes[i]]) {
                     slides.push(new slideClasses[classes[i]](this));
                     found = true;
+                    i = classes.length;
                 }
             }
             if (!found) {
                 slides.push(new Slide(this));
             }
+            $('.pagination select').append($('<option></option>').text(slides.length + ' - ' + $(this).attr('title')));
         });
-        var ss = new slideshow(slides);
-        $('body').keydown(function(e) {
+        var ss = new Slideshow(slides);
+
+        $(window).click(function(e) {
+            if (e.clientX < $('div.window').css('margin-left').replace('px', '')) {
+                ss.prev();
+            } else {
+                ss.next();
+            }
+            e.preventDefault();
+            e.stopPropagation();
+        }).keydown(function(e) {
             if (e.which == 37) {
                 ss.prev();
             } else if (e.which == 39) {
                 ss.next();
             }
-        });
-
-        var resize = function() {
+        }).swipeleft(function() {
+            ss.prev();
+        }).swiperight(function() {
+            ss.next();
+        }).resize(function() {
             var min = Math.min($(window).height() * 4/3, $(window).width());
             $('div.window, div.slider div').height(Math.floor(min * 3 / 4)).width(Math.floor(min));
             var fontSize = Math.floor((Math.min($(window).height()*4/3, $(window).width()) / 480) * 80);
             $('body').css('font-size', fontSize + '%');
             ss.resize(Math.floor(min), Math.floor(min * 3 / 4));
-        };
-        $(window).resize(resize);
-        resize();
-        $(window).hashchange(function() {
+        }).hashchange(function() {
             if (document.location.hash != '' && document.location.hash != '#') {
                 ss.goToPage(parseInt(document.location.hash.replace('#', '')));
             }
-        });
-        $(window).hashchange();
-		$('code').addClass('prettyprint');
-		prettyPrint();
+        }).resize().hashchange();
+        $('code').addClass('prettyprint');
+        prettyPrint();
     });
     
     function normalize(str) {
         var arr = str.replace("\r", "").split("\n");
         var minChars = str.length;
-        var re1 = /^\s*/;
-        var re2 = /^\s*$/;
         for (var i = 0; i < arr.length; i++) {
-            if (arr[i] == '' || re2.test(arr[i])) {
+            if (arr[i] == '' || /^\s*$/.test(arr[i])) {
                 arr[i] = '';  
             } else {
                 arr[i] = arr[i].replace("\t", "    ");
-                minChars=Math.min(re1.exec(arr[i])[0].length, minChars);
+                minChars=Math.min(/^\s*/.exec(arr[i])[0].length, minChars);
             }
         }
         var re3 = new RegExp('^\\\s{' + minChars + '}');

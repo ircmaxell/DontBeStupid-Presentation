@@ -4,6 +4,7 @@
         <title>Don't Be Stupid, Grasp Solid</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="assets/js/jquery.js"></script>
+	    <script type="text/javascript" src="assets/js/jquery.mobile.js"></script>
         <script type="text/javascript" src="assets/js/jquery.tools.js"></script>
         <script type="text/javascript" src="assets/js/jquery.hashchange.js"></script>
         <script type="text/javascript" src="assets/js/markdown.js"></script>
@@ -19,7 +20,7 @@
     <body>
         <div class="window">
             <div class="slider">
-                <div class="markdown title">
+                <div class="markdown title" title="Home">
                     Don't Be STUPID
                     ===============
                     Grasp SOLID
@@ -28,7 +29,7 @@
                     ##### And Other Principles of 
                     ##### Object Oriented Design
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="Paradigms">
                     ## What Is A Paradigm
                     * Where is state stored?
                         * Variables?
@@ -43,7 +44,7 @@
                         * Actions On State?
                         * ...
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="Procedural">
                     ## Procedural Programming
                     * State Is Stored In Variables
                             
@@ -55,7 +56,7 @@
 
                             $foo = $foo + 1;
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="Functional">
                     ## Functional Programming
                     * There Is No State
                             
@@ -67,7 +68,7 @@
 
                             foo($foo + 1)
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="OOP">
                     ## Object Oriented Programming
                     * State Is Stored By Objects
                             
@@ -79,10 +80,15 @@
 
                             $object->doSomething();
                 </div>
-                <div class="Paradigms">
+                <div class="Paradigms" title="Paradigms 2">
                     <canvas id="paradigms" width="1200" height=900"></canvas>
                 </div>
-                <div class="stupid Letters">
+                <div class="markdown paradigm-summary" title="Principles">
+                    # None Of These Principles
+                    # Are Limited To OOP
+                    ##### They can be applied to any paradigm
+                </div>
+                <div class="stupid Letters" title="STUPID 1">
                     <dl>
                         <dt>S</dt>
                         <dd class="show">ingletons</dd>
@@ -93,7 +99,7 @@
                         <dt>D</dt>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="Singletons">
                     ## Singletons
                     * What Is a Singleton?
                         * Global State
@@ -108,7 +114,7 @@
                     * Singletons Are Not OOP!
                         * They are a COP construct
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Singletons 2">
                     ## Singletons (ctd)
                     
                         class Foo {
@@ -125,7 +131,7 @@
                             }
                         }
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Singletons 3">
                     ## Singletons (ctd)
                     
                         class Foo {
@@ -137,7 +143,7 @@
                             }
                         }
                 </div>
-                <div class="stupid Letters">
+                <div class="stupid Letters" title="STUPID 2">
                     <dl>
                         <dt>S</dt>
                         <dd>ingletons</dd>
@@ -149,10 +155,10 @@
                         <dt>D</dt>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="Tight Coupling">
                     ## Tight Coupling
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Tight Coupling 2">
                     ## Tight Coupling (ctd)
                     
                         class Foo {
@@ -164,7 +170,7 @@
                             }
                         }
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Tight Coupling 3">
                     ## Tight Coupling (ctd)
                     
                         interface doFoo {
@@ -179,7 +185,7 @@
                             }
                         }
                 </div>
-                <div class="stupid Letters">
+                <div class="stupid Letters" title="STUPID 3">
                     <dl>
                         <dt>S</dt>
                         <dd>ingletons</dd>
@@ -192,10 +198,10 @@
                         <dt>D</dt>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="Untestable Code">
                     ## Untestable Code
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Untestable Code 2">
                     ## Untestable Code (ctd)
                     
                         class Foo {
@@ -206,7 +212,7 @@
                             }
                         }
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Untestable Code 3">
                     ## Untestable Code (ctd)
                     
                         class Foo {
@@ -217,7 +223,7 @@
                             }
                         }
                 </div>
-                <div class="stupid Letters">
+                <div class="stupid Letters" title="STUPID 4">
                     <dl>
                         <dt>S</dt>
                         <dd>ingletons</dd>
@@ -231,10 +237,10 @@
                         <dt>D</dt>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="Premature Optimization">
                     ## Premature Optimization
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Premature Optimization 2">
                     ## Premature Optimization (ctd)
                     
                         class Bar {
@@ -247,7 +253,7 @@
                             }
                         }
                 </div>
-                <div class="stupid Letters">
+                <div class="stupid Letters" title="STUPID 5">
                     <dl>
                         <dt>S</dt>
                         <dd>ingletons</dd>
@@ -262,10 +268,10 @@
                         <dt>D</dt>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="Indescriptive Naming">
                     ## Indescriptive Naming
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Indescriptive Naming 2">
                     ## Indescriptive Naming (ctd)
                     
                         class Bar {
@@ -281,7 +287,7 @@
                             }
                         }
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Indescriptive Naming 3">
                     ## Indescriptive Naming (ctd)
                     
                         class FileProxy {
@@ -297,7 +303,7 @@
                             }
                         }
                 </div>
-                <div class="stupid Letters">
+                <div class="stupid Letters" title="STUPID 6">
                     <dl>
                         <dt>S</dt>
                         <dd>ingletons</dd>
@@ -313,10 +319,10 @@
                         <dd class="show">uplication</dd>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="Duplication">
                     ## Duplication
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Duplication 2">
                     ## Duplication (ctd)
                     
                         class Bar {
@@ -333,7 +339,7 @@
                             }
                         }
                 </div>
-                <div class="markdown codeblock">
+                <div class="markdown codeblock" title="Duplication 3">
                     ## Duplication (ctd)
                     
                         class Bar {
@@ -346,11 +352,11 @@
                             }
                         }
                 </div>
-                <div class="markdown title">
+                <div class="markdown title" title="STUPID 7">
                     Don't Be Stupid
                     ===============
                 </div>
-                <div class="solid Letters">
+                <div class="solid Letters" title="SOLID">
                     <dl>
                         <dt>S</dt>
                         <dd class="show">ingle Responsibility Principle</dd>
@@ -360,10 +366,10 @@
                         <dt>D</dt>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="SRP">
                     ## Single Responsibility Principle
                 </div>
-                <div class="solid Letters">
+                <div class="solid Letters" title="SOLID 2">
                     <dl>
                         <dt>S</dt>
                         <dd>ingle Responsibility Principle</dd>
@@ -374,10 +380,10 @@
                         <dt>D</dt>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="OCP">
                     ## Open / Closed Principle
                 </div>
-                <div class="solid Letters">
+                <div class="solid Letters" title="SOLID 3">
                     <dl>
                         <dt>S</dt>
                         <dd>ingle Responsibility Principle</dd>
@@ -389,10 +395,10 @@
                         <dt>D</dt>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="LSP">
                     ## Liskov Substitution Principle
                 </div>
-                <div class="solid Letters">
+                <div class="solid Letters" title="SOLID 4">
                     <dl>
                         <dt>S</dt>
                         <dd>ingle Responsibility Principle</dd>
@@ -405,10 +411,10 @@
                         <dt>D</dt>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="ISP">
                     ## Interface Segregation Principle
                 </div>
-                <div class="solid Letters">
+                <div class="solid Letters" title="SOLID 5">
                     <dl>
                         <dt>S</dt>
                         <dd>ingle Responsibility Principle</dd>
@@ -422,52 +428,38 @@
                         <dd class="show">ependency Inversion Principle</dd>
                     </dl>
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="DIP">
                     ## Dependency Inversion Principle
                 </div>
-                <div class="dull Letters">
+                <div class="slow Letters" title="SLOW">
                     <dl>
-                        <dt>D</dt>
-                        <dd class="show">eep Inheritance</dd>
-                        <dt>U</dt>
+                        <dt>S</dt>
+                        <dd class="show">tatic Coupling</dd>
                         <dt>L</dt>
-                        <dt>L</dt>
+                        <dt>O</dt>
+                        <dt>W</dt>
                     </dl>
                 </div>
-                <div class="markdown List">
-                    ## Deep Inheritance
+                <div class="markdown List" title="Static Coupling">
+                    ## Static Coupling
                 </div>
-                <div class="dull Letters">
+                <div class="slow Letters" title="SLOW 2">
                     <dl>
-                        <dt>D</dt>
-                        <dd>eep Inheritance</dd>
-                        <dt>U</dt>
-                        <dd class="show">nclear Magic</dd>
-                        <dt>L</dt>
-                        <dt>L</dt>
-                    </dl>
-                </div>
-                <div class="markdown List">
-                    ## Unclear Magic
-                </div>
-                <div class="dull Letters">
-                    <dl>
-                        <dt>D</dt>
-                        <dd>eep Inheritance</dd>
-                        <dt>U</dt>
-                        <dd>nclear Magic</dd>
+                        <dt>S</dt>
+                        <dd>tatic Coupling</dd>
                         <dt>L</dt>
                         <dd class="show">eaky Abstractions</dd>
-                        <dt>L</dt>
+                        <dt>O</dt>
+                        <dt>W</dt>
                     </dl>
                 </div>
-                <div>
+                <div title="Camaro">
                     <img src="assets/images/camaro.jpg" class="full" />
                 </div>
-                <div>
+                <div title="Pedals">
                     <img src="assets/images/brake_pedal.jpg" class="full" />
                 </div>
-                <div class="markdown List">
+                <div class="markdown List" title="Leaky Abstractions">
                     ## Leaky Abstractions    
                     * They Are Everywhere
                         * Database Connections
@@ -482,7 +474,7 @@
                         * Capture Exceptions
                         * Check For Side-effects
                 </div>
-                <div class="markdown leak List">
+                <div class="markdown leak List" title="Leaky Abstractions 2">
                     ## Leaky Abstractions (ctd)
                     * Leaky:
                     
@@ -495,7 +487,7 @@
                                 */
                             }
                 </div>
-                <div class="markdown leak List">
+                <div class="markdown leak List" title="Leaky Abstractions 3">
                     ## Leaky Abstractions (ctd)
                     * Better:
                     
@@ -510,7 +502,7 @@
                                 */
                             }
                 </div>
-                <div class="markdown leak List">
+                <div class="markdown leak List" title="Leaky Abstractions 4">
                     ## Leaky Abstractions (ctd)
                     * Better Still:
                     
@@ -523,27 +515,42 @@
                                 */
                             }
                 </div>
-                <div class="dull Letters">
+
+                <div class="slow Letters" title="SLOW 3">
                     <dl>
-                        <dt>D</dt>
-                        <dd>eep Inheritance</dd>
-                        <dt>U</dt>
-                        <dd>nclear Magic</dd>
+                        <dt>S</dt>
+                        <dd>tatic Coupling</dd>
                         <dt>L</dt>
                         <dd>eaky Abstractions</dd>
+                        <dt>O</dt>
+                        <dd class="show">verengineerd</dd>
                         <dt>L</dt>
-                        <dd class="show">ayer Crossing</dd>
                     </dl>
                 </div>
-                <div class="markdown List">
-                    ## Layer Crossing
+                <div class="markdown List" title="Overengineered">
+                    ## Overengineered
                 </div>
-                <div class="markdown List comments">
+                <div class="slow Letters" title="SLOW 4">
+                    <dl>
+                        <dt>S</dt>
+                        <dd>tatic Coupling</dd>
+                        <dt>L</dt>
+                        <dd>eaky Abstractions</dd>
+                        <dt>O</dt>
+                        <dd>verengineered</dd>
+                        <dt>W</dt>
+                        <dd class="show">orkarounds</dd>
+                    </dl>
+                </div>
+                <div class="markdown List" title="Workarounds">
+                    ## Workarounds
+                </div>
+                <div class="markdown List comments" title="Comments">
                     1. Questions?
                     2. Comments?
                     3. Snide Remarks?
                 </div>
-                <div class="markdown credits">
+                <div class="markdown credits" title="Credits">
                     ## Anthony Ferrara
                     ## @ircmaxell
                     ## blog.ircmaxell.com
@@ -551,5 +558,11 @@
                 </div>
             </div>
         </div>
+		<div class="pagination">
+			<form>
+				<select>
+				</select>
+			</form>
+		</div>
     </body>
 </html>

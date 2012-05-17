@@ -45,6 +45,25 @@ div.slider div {
     float: left;
 }
 
+div.window {
+    overflow: hidden;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.slider {
+    position: absolute;
+    width: auto;
+    display: inline;
+    white-space: nowrap;
+    -moz-transition: all 1s; 
+    -webkit-transition: all 1s;  
+    -ms-transition: all 1s;  
+    -o-transition: all 1s;  
+    transition: all 1s; 
+}
+
 h1 {
     text-align: center;
     font-size: 4.5em;
@@ -60,20 +79,6 @@ h5 {
     text-align: right;
     padding-right: .5em;
     font-size: 2em;
-}
-
-div.window {
-    overflow: hidden;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-div.slider {
-    position: absolute;
-    width: auto;
-    display: inline;
-    white-space: nowrap;
 }
 
 canvas#paradigms {
@@ -119,12 +124,12 @@ div.solid dd {
 div.solid dt {
     font-size: 4em;
 }
-div.dull dd {
+div.slow dd {
     font-size: 2.7em;
     margin-top: 1.2em;
     padding-left: 0.1em;
 }
-div.dull dt {
+div.slow dt {
     font-size: 4.5em;
     padding-top: 0.4em;
 }
@@ -181,4 +186,23 @@ div.slider div.credits h2 {
 
 div.slider div.codeblock code {
     font-size: 1.8em;
+}
+div.slider div.paradigm-summary h1 {
+    padding-top: 1.5em;
+    font-size: 3em;
+}
+
+div.slider div.paradigm-summary h5 {
+    padding-top: 2em;
+}
+
+div.pagination {
+	position: absolute;
+	bottom: 1px;
+	right: 1px;
+}
+div.pagination select {
+	font-size: 0.4em;
+	padding: 3px;
+	-webkit-appearance: menulist-button;
 }
