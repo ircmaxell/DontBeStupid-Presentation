@@ -215,3 +215,8 @@ div.printerInterface2 h2 {
 div.printerInterface2 code {
     font-size: 1.5em;
 }
+div h2 code.prettyprint {
+    display: inline;
+    margin: 0.1em;
+    padding: 0.2em;
+}

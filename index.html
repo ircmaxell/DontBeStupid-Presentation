@@ -4,7 +4,7 @@
         <title>Don't Be Stupid, Grasp Solid</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="assets/js/jquery.js"></script>
-	    <script type="text/javascript" src="assets/js/jquery.mobile.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.mobile.js"></script>
         <script type="text/javascript" src="assets/js/jquery.tools.js"></script>
         <script type="text/javascript" src="assets/js/jquery.hashchange.js"></script>
         <script type="text/javascript" src="assets/js/markdown.js"></script>
@@ -28,6 +28,12 @@
                                         
                     ##### And Other Principles of 
                     ##### Object Oriented Design
+                </div>
+                <div class="markdown title" title="Blog">
+                    # These Slides
+                    # Are Availabe
+                    # Right Now:
+                    ## blog.ircmaxell.com
                 </div>
                 <div class="markdown List" title="Paradigms">
                     ## What Is A Paradigm
@@ -366,8 +372,25 @@
                         <dt>D</dt>
                     </dl>
                 </div>
+                <div title="Swiss Army Knife">
+                    <img src="assets/images/swiss_army_knife.jpg" class="full" />
+                </div>
+                <div title="Tools">
+                    <img src="assets/images/tools.jpg" class="full" />
+                </div>
                 <div class="markdown List" title="SRP">
                     ## Single Responsibility Principle
+                    * Classes Should Have Only  
+                        One Reason to Change
+                    * They Should Have One Responsibility
+                        * And Encapsulate it Fully
+                    * How Can This Be Possible?
+                        * By Properly Abstracting Classes
+                        * By Coupling on Abstractions Instead of Details
+                    * Change Becomes Localized
+                        * Reduces "Ripple Effects"
+                        * Reduces Complexity of Change
+                        * Reduces Cost of Change
                 </div>
                 <div class="solid Letters" title="SOLID 2">
                     <dl>
@@ -380,8 +403,24 @@
                         <dt>D</dt>
                     </dl>
                 </div>
+                <div title="Hat">
+                    <img src="assets/images/hat.jpg" class="full" />
+                </div>
+                <div title="Brain Surgery">
+                    <img src="assets/images/brain_surgery.jpg" class="full" />
+                </div>
                 <div class="markdown List" title="OCP">
                     ## Open / Closed Principle
+                    * Code Should Be:
+                        * Open For Extension
+                        * Closed For Modification
+                    * Only Bug Fixes Allowed!
+                    * Compare:
+                        * Facebook - Changing API
+                        * StackOverflow - Versioned API
+                    * In Other Words:
+                        * Don't Perform Surgery When  
+                            Putting On A Hat Will Do
                 </div>
                 <div class="solid Letters" title="SOLID 3">
                     <dl>
@@ -500,6 +539,9 @@
                         <dd class="show">ependency Inversion Principle</dd>
                     </dl>
                 </div>
+                <div title="Outlet Solder">
+                    <img src="assets/images/dependency_inversion_principle.jpg" class="full" />
+                </div>
                 <div class="markdown List" title="DIP">
                     ## Dependency Inversion Principle
                     * High level modules should depend  
@@ -514,27 +556,17 @@
                         * Keep Abstractions Reusable
                     * Focus On Abstraction, Not Detail
                 </div>
-                <div class="slow Letters" title="SLOW">
-                    <dl>
-                        <dt>S</dt>
-                        <dd class="show">tatic Coupling</dd>
-                        <dt>L</dt>
-                        <dt>O</dt>
-                        <dt>W</dt>
-                    </dl>
+                <div class="markdown title" title="Some Additional Patterns">
+                    # Some Additional
+                    # Patterns
                 </div>
-                <div class="markdown List" title="Static Coupling">
-                    ## Static Coupling
+                <div class="markdown title" title="Static Coupling">
+                    # Static 
+                    # Coupling
                 </div>
-                <div class="slow Letters" title="SLOW 2">
-                    <dl>
-                        <dt>S</dt>
-                        <dd>tatic Coupling</dd>
-                        <dt>L</dt>
-                        <dd class="show">eaky Abstractions</dd>
-                        <dt>O</dt>
-                        <dt>W</dt>
-                    </dl>
+                <div class="markdown title" title="Leaky Abstractions Title">
+                    # Leaky
+                    # Abstractions
                 </div>
                 <div title="Camaro">
                     <img src="assets/images/camaro.jpg" class="full" />
@@ -598,35 +630,125 @@
                                 */
                             }
                 </div>
-
-                <div class="slow Letters" title="SLOW 3">
-                    <dl>
-                        <dt>S</dt>
-                        <dd>tatic Coupling</dd>
-                        <dt>L</dt>
-                        <dd>eaky Abstractions</dd>
-                        <dt>O</dt>
-                        <dd class="show">verengineerd</dd>
-                        <dt>L</dt>
-                    </dl>
+                <div class="markdown title" title="Law of Demeter Title">
+                    # Law of
+                    # Demeter
                 </div>
-                <div class="markdown List" title="Overengineered">
-                    ## Overengineered
+                <div class="markdown title" title="Real World Problems">
+                    # Real World
+                    # Applications
+                    ## (And Problems)
                 </div>
-                <div class="slow Letters" title="SLOW 4">
-                    <dl>
-                        <dt>S</dt>
-                        <dd>tatic Coupling</dd>
-                        <dt>L</dt>
-                        <dd>eaky Abstractions</dd>
-                        <dt>O</dt>
-                        <dd>verengineered</dd>
-                        <dt>W</dt>
-                        <dd class="show">orkarounds</dd>
-                    </dl>
+                <div class="markdown List" title="Active Record">
+                    ## Active Record
+                    * Business Objects Are "Active"
+                    
+                            $obj->save();
+                    
+                    * Violates:
+                        * Tight Coupling
+                        * Single Responsibility Principle
+                        * Open Closed Principle
+                        * Interface Segregation Principle
+                        * Dependency Inversion Principle
+                        * Leaky Abstractions
                 </div>
-                <div class="markdown List" title="Workarounds">
-                    ## Workarounds
+                <div class="markdown List" title="Active Record 2">
+                    ## Active Record (ctd)
+                    * ORM Has The Same Problems
+                        * Only If Applied To Business Objects
+                    * Can Be Used In A Data Mapper
+                        * (A Layer Between Business And Persistence)
+                </div>
+                <div class="markdown List" title="Service Locator">
+                    ## Service Locator
+                    ## Dependency Injection Container
+                    ## Global Registry
+                    * A Container Is Injected
+                        * Dependencies Are "Pulled" From Container
+                    * Violates:
+                        * Tight Coupling
+                        * Single Responsibility Principle
+                        * Dependency Inversion Principle
+                        * Law Of Demeter
+                </div>
+                <div class="markdown List" title="Service Locator 2">
+                    ## Service Locator (ctd)
+                    * Better Than Concrete Dependencies
+                        * Adds A Place To Inject Mocks
+                        * It Is Testable
+                    * **NOT** Dependency Injection
+                        * Depends On A Concrete Locator
+                        * Class Is Not Dependent Upon An Abstraction
+                </div>
+                <div class="markdown List" title="The New Operator">
+                    ## The `new` Operator
+                    * Instantiating Classes Inside Objects
+                        * Instead Of Injecting Dependencies
+                    * Violates:
+                        * Tight Coupling
+                        * Untestable Code
+                        * Single Responsibility Principle
+                        * Dependency Inversion Principle
+                        * Static Coupling
+                </div>
+                <div title="A House">
+                    <img src="assets/images/house.jpg" class="full" />
+                </div>
+                <div title="A Door">
+                    <img src="assets/images/door.jpg" class="full" />
+                </div>
+                <div title="A Doorknob">
+                    <img src="assets/images/doorknob.jpg" class="full" />
+                </div>
+                <div class="markdown List" title="The New Operator 2">
+                    ## The `new` Operator (ctd)
+                    * Creating Is a Responsibility
+                        * Invert The Dependency
+                        * By Injecting The Dependency
+                    * A Few Exceptions:
+                        * The *main* method
+                        * Factories
+                        * Builders
+                        * Concrete Proxies
+                </div>
+                <div class="markdown List" title="Method Chaining">
+                    ## Method Chaining
+                    ## Fluid Interfaces
+                    * Call Methods On Each Other
+                        * "Tells A Story"
+                        
+                                $foo->bar()->baz()->biz()->baz()->buz();
+                    * Violates:
+                        * Tight Coupling
+                        * Untestable Code
+                        * Dependency Inversion Principle
+                        * Leaky Abstractions
+                        * Law of Demeter
+                </div>
+                <div class="markdown title" title="Good Enough">
+                    # Good
+                    # Is Not
+                    # Good Enough
+                </div>
+                <div class="markdown title" title="Guidelines">
+                    # These Are
+                    # Guidelines
+                </div>
+                <div class="markdown title" title="Violate">
+                    # Feel Free
+                    # To
+                    # Violate Them
+                </div>
+                <div class="markdown title" title="Understand">
+                    # But 
+                    # Understand
+                    # Them
+                </div>
+                <div class="markdown title" title="Know What You're Giving Up">
+                    # And Know What 
+                    # You're
+                    # Giving Up
                 </div>
                 <div class="markdown List comments" title="Comments">
                     1. Questions?
@@ -641,11 +763,11 @@
                 </div>
             </div>
         </div>
-		<div class="pagination">
-			<form>
-				<select>
-				</select>
-			</form>
-		</div>
+        <div class="pagination">
+            <form>
+                <select>
+                </select>
+            </form>
+        </div>
     </body>
 </html>
