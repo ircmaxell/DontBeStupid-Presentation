@@ -395,8 +395,30 @@
                         <dt>D</dt>
                     </dl>
                 </div>
+                <div title="Outlet">
+                    <img src="assets/images/outlet.png" class="full" />
+                </div>
+                <div title="Outlet 2">
+                    <img src="assets/images/outlet1.jpg" class="full" />
+                </div>
+                <div title="Outlet 3">
+                    <img src="assets/images/outlet2.jpg" class="full" />
+                </div>
+                <div title="Outlet 4">
+                    <img src="assets/images/outlet3.jpg" class="full" />
+                </div>
                 <div class="markdown List" title="LSP">
                     ## Liskov Substitution Principle
+                    * Parent Types Should Be Replaceable  
+                        By Child Types
+                    * Therefore:
+                        * Children Should Accept More Liberally
+                        * Children Should Produce More Strictly
+                        * Invarients Must Be Preserved
+                        * Exceptions Should Be Stricter
+                    * However:
+                        * Does not apply to siblings
+                        * Does not apply in reverse
                 </div>
                 <div class="solid Letters" title="SOLID 4">
                     <dl>
@@ -411,8 +433,58 @@
                         <dt>D</dt>
                     </dl>
                 </div>
+                <div title="Printer">
+                    <img src="assets/images/printer.jpg" class="full" />
+                </div>
+                <div title="Printer 2">
+                    <img src="assets/images/printer2.jpg" class="full" />
+                </div>
+                <div title="Printer 3">
+                    <img src="assets/images/scanner.jpg" class="full" />
+                </div>
+                <div title="Printer 4">
+                    <img src="assets/images/fax.jpg" class="full" />
+                </div>
+                <div title="Printer 5">
+                    <img src="assets/images/card_reader.jpg" class="full" />
+                </div>
+                <div title="MultiFunction Printer" class="markdown printerInterface1">
+                    ## MultiFunction Interface
+                        public function print($page);
+
+                        public function scan();
+
+                        public function fax($page, $number);
+
+                        public function readCard();
+
+                        public function importPhotos();
+
+                </div>
+                <div title="Printer Take 2" class="markdown printerInterface2">
+                    ## Printer Interface
+                        public function print($page);
+                    ## Scanner Interface
+                        public function scan();
+                    ## Fax Interface
+                        public function fax($page, $number);
+                    ## CardReader Interface
+                        public function readCard();
+                    ## Camera Interface
+                        public function importPhotos();
+
+                </div>
                 <div class="markdown List" title="ISP">
                     ## Interface Segregation Principle
+                    * Many Client-Specific Interfaces  
+                        Are Better Than One Big One
+                        * The Key Is Minimizing Coupling Surface
+                    * Decreases Coupling Between Objects
+                    * Can be interfaces
+                        * Or Classes (Facade Pattern)
+                        * Or Packages
+                        * Or Layers (View Layer, etc)
+                    * Inverts The Dependency
                 </div>
                 <div class="solid Letters" title="SOLID 5">
                     <dl>
@@ -430,6 +502,17 @@
                 </div>
                 <div class="markdown List" title="DIP">
                     ## Dependency Inversion Principle
+                    * High level modules should depend  
+                        upon Abstractions, not low-level  
+                        modules
+                        * This reduces coupling, and makes  
+                            abstract code reusable
+                    * Abstractions should not depend  
+                        upon Details, but Details should  
+                        depend upon Abstractions
+                        * Keep Abstractions clean
+                        * Keep Abstractions Reusable
+                    * Focus On Abstraction, Not Detail
                 </div>
                 <div class="slow Letters" title="SLOW">
                     <dl>

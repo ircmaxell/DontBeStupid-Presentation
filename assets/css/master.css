@@ -206,3 +206,12 @@ div.pagination select {
 	padding: 3px;
 	-webkit-appearance: menulist-button;
 }
+div.printerInterface1 code {
+    font-size: 2em;
+}
+div.printerInterface2 h2 {
+    font-size: 1.8em;
+}
+div.printerInterface2 code {
+    font-size: 1.5em;
+}
