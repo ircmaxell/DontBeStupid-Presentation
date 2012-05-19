@@ -416,112 +416,6 @@
                     Don't Be Stupid
                     ===============
                 </div>
-                <div class="solid Letters" title="GRASP">
-                    <dl>
-                        <dt>G</dt>
-                        <dd class="show">eneral</dd>
-                        <dt>R</dt>
-                        <dd class="show">esponsibility</dd>
-                        <dt>A</dt>
-                        <dd class="show">ssignment</dd>
-                        <dt>S</dt>
-                        <dd class="show">oftware</dd>
-                        <dt>P</dt>
-                        <dd class="show">atterns</dd>
-                    </dl>
-                </div>
-                <div class="markdown List" title="Creator">
-                    ## Creator
-                    * Responsible For Creating Objects
-                    * A Creates B IFF:
-                        * A contains B
-                        * A aggregates B
-                        * A persists B
-                        * A closely uses B
-                        * A has all the initialization info for B
-                </div>
-                <div class="markdown List" title="Information Expert">
-                    ## Information Expert
-                    * Responsibility Based On Information
-                    * When Adding Responsibility:
-                        1. Determine Information Needed
-                        2. Determine Where That Information Is
-                        3. Place Responsibility With Information
-                </div>
-                <div class="markdown List" title="Controller">
-                    ## Controller
-                    * Responsible For Handling  
-                        System Events
-                    * Should Handle All Events  
-                        For A Use-Case
-                        * Can Handle Multiple Related Use-Cases
-                    * Is A Delegator  
-                        Not A Worker
-                        * Delegates and Coordinates Work To  
-                            Other Non-Controller objects
-                </div>
-                <div class="markdown List" title="Low Coupling">
-                    ## Low/Loose Coupling
-                    * Low Dependency Between Classes
-                        * Only Depend Upon Abstraction
-                    * Low Change Impact On Other Classes
-                        * Changes to a Class Shouldn't Require  
-                            Changes To Classes That Depend Upon It
-                    * High Reuse Potential 
-                </div>
-                <div class="markdown List" title="High Cohesion">
-                    ## High Cohesion
-                    * Responsibilities Are Highly Related
-                        * Uses (Mostly) The Same Data
-                        * Does Related Actions
-                    * Types:
-                        * Logical
-                        * Temporal
-                        * Procedural
-                        * Communicational
-                        * Sequential
-                        * Functional
-                </div>
-                <div class="markdown List" title="Polymorphism">
-                    ## Polymorphism
-                    * Varying Behavior Should Be  
-                        Defined By Different Types
-                    * Each Type Defines One  
-                        Behavior
-                    * By Encapsulating Behavior:
-                        * Modification Becomes Easier To Manage
-                        * Dependency (coupling) On Behavior Is Reduced
-                        * Cohesion Is Increased
-                </div>
-                <div class="markdown List" title="Pure Fabrication">
-                    ## Pure Fabrication
-                    * A Class That Does Not  
-                        Represent A Concept
-                    * Exists Purely For Low Coupling  
-                        And High Cohesion
-                        * Increases Maintainability
-                        * Makes Reuse Easier
-                </div>
-                <div class="markdown List" title="Indirection">
-                    ## Indirection
-                    * Decouple Related Objects By  
-                        Introducing A Mediator
-                        * An Intermediary Object
-                    * Communication Is Proxied
-                        * Promotes Loose Coupling
-                        * Promotes Reuse
-                </div>
-                <div class="markdown List" title="Protected Variations">
-                    ## Protected Variations
-                    * Wrap Instability In An Interface
-                        * Allows Polymorphic Variations
-                    * Instability Can Be:
-                        * Classes
-                        * Packages
-                        * Libraries
-                        * Systems
-                    * Adapter and Facade Patterns
-                </div>
                 <div class="solid Letters" title="SOLID">
                     <dl>
                         <dt>S</dt>
@@ -781,7 +675,7 @@
                                 $mapper->loadPerson(1);
                             } catch (RecordNotFoundException $e) {
                                 /* Eih!
-                                  A Person My Be A Record
+                                  A Person May Be A Record
                                   But If It's A First-Class
                                   Object, Why Leak The Record
                                   Part???
