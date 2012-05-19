@@ -94,6 +94,11 @@
                     # Are Limited To OOP
                     ##### They can be applied to any paradigm
                 </div>
+                <div class="markdown paradigm-summary" title="Principles 2">
+                    # All Of These Principles
+                    # Are For Production Code
+                    ##### They can be violated while developing
+                </div>
                 <div class="stupid Letters" title="STUPID 1">
                     <dl>
                         <dt>S</dt>
@@ -163,6 +168,18 @@
                 </div>
                 <div class="markdown List" title="Tight Coupling">
                     ## Tight Coupling
+                    * Coupling Two Unrelated Classes
+                        * Through Type Hints
+                        * Through Static Calls
+                        * Through Direct Instantiation
+                    * Complicates:
+                        * Integration
+                        * Testing
+                        * Reuse
+                        * Modification In General
+                            1. Bug Fixes
+                            2. New Functionality
+                            3. New Responsibilities
                 </div>
                 <div class="markdown codeblock" title="Tight Coupling 2">
                     ## Tight Coupling (ctd)
@@ -206,6 +223,16 @@
                 </div>
                 <div class="markdown List" title="Untestable Code">
                     ## Untestable Code
+                    * Untestable Is Unmaintainable
+                    * Factors:
+                        * Tight Coupling
+                        * Doing Too Much
+                        * Long Methods
+                        * Complex Code
+                    * Complicates:
+                        * Testing
+                        * Maintenance
+                        * Robustness
                 </div>
                 <div class="markdown codeblock" title="Untestable Code 2">
                     ## Untestable Code (ctd)
@@ -245,6 +272,17 @@
                 </div>
                 <div class="markdown List" title="Premature Optimization">
                     ## Premature Optimization
+                    * Rules of Optimization:
+                        1. Don't Do It!
+                        2. (experts only) Don't Do It Yet!
+                    * It's Easier To Optimize  
+                        Correct Code
+                    * Than Correct Optimized Code
+                    * 90/10 Rule:
+                        * 90% of Performance Problems  
+                            Come From 10% of Code
+                    * Save Time
+                        * Optimized When It's Proved A Problem
                 </div>
                 <div class="markdown codeblock" title="Premature Optimization 2">
                     ## Premature Optimization (ctd)
@@ -276,6 +314,17 @@
                 </div>
                 <div class="markdown List" title="Indescriptive Naming">
                     ## Indescriptive Naming
+                    * Naming Is Hard!
+                        * But Very Important
+                    * Names Should Self-Document
+                        * As Succinct As Possible
+                        * Favoring Clarity Over Brevity
+                    * Code is Read Far More Often  
+                        Than Written
+                        * So Save Time, Write Clearly
+                    * 60/60 Rule
+                        * 60% Of Cost Comes Post Deployment
+                        * 60% Of That Cost Comes From Changes
                 </div>
                 <div class="markdown codeblock" title="Indescriptive Naming 2">
                     ## Indescriptive Naming (ctd)
@@ -296,7 +345,7 @@
                 <div class="markdown codeblock" title="Indescriptive Naming 3">
                     ## Indescriptive Naming (ctd)
                     
-                        class FileProxy {
+                        class FileAdapter {
                         
                             protected $file;
                             
@@ -327,6 +376,11 @@
                 </div>
                 <div class="markdown List" title="Duplication">
                     ## Duplication
+                    * Do I Need To Say More?
+                    * DRY
+                        * Don't
+                        * Repeat
+                        * Yourself
                 </div>
                 <div class="markdown codeblock" title="Duplication 2">
                     ## Duplication (ctd)
@@ -361,6 +415,112 @@
                 <div class="markdown title" title="STUPID 7">
                     Don't Be Stupid
                     ===============
+                </div>
+                <div class="solid Letters" title="GRASP">
+                    <dl>
+                        <dt>G</dt>
+                        <dd class="show">eneral</dd>
+                        <dt>R</dt>
+                        <dd class="show">esponsibility</dd>
+                        <dt>A</dt>
+                        <dd class="show">ssignment</dd>
+                        <dt>S</dt>
+                        <dd class="show">oftware</dd>
+                        <dt>P</dt>
+                        <dd class="show">atterns</dd>
+                    </dl>
+                </div>
+                <div class="markdown List" title="Creator">
+                    ## Creator
+                    * Responsible For Creating Objects
+                    * A Creates B IFF:
+                        * A contains B
+                        * A aggregates B
+                        * A persists B
+                        * A closely uses B
+                        * A has all the initialization info for B
+                </div>
+                <div class="markdown List" title="Information Expert">
+                    ## Information Expert
+                    * Responsibility Based On Information
+                    * When Adding Responsibility:
+                        1. Determine Information Needed
+                        2. Determine Where That Information Is
+                        3. Place Responsibility With Information
+                </div>
+                <div class="markdown List" title="Controller">
+                    ## Controller
+                    * Responsible For Handling  
+                        System Events
+                    * Should Handle All Events  
+                        For A Use-Case
+                        * Can Handle Multiple Related Use-Cases
+                    * Is A Delegator  
+                        Not A Worker
+                        * Delegates and Coordinates Work To  
+                            Other Non-Controller objects
+                </div>
+                <div class="markdown List" title="Low Coupling">
+                    ## Low/Loose Coupling
+                    * Low Dependency Between Classes
+                        * Only Depend Upon Abstraction
+                    * Low Change Impact On Other Classes
+                        * Changes to a Class Shouldn't Require  
+                            Changes To Classes That Depend Upon It
+                    * High Reuse Potential 
+                </div>
+                <div class="markdown List" title="High Cohesion">
+                    ## High Cohesion
+                    * Responsibilities Are Highly Related
+                        * Uses (Mostly) The Same Data
+                        * Does Related Actions
+                    * Types:
+                        * Logical
+                        * Temporal
+                        * Procedural
+                        * Communicational
+                        * Sequential
+                        * Functional
+                </div>
+                <div class="markdown List" title="Polymorphism">
+                    ## Polymorphism
+                    * Varying Behavior Should Be  
+                        Defined By Different Types
+                    * Each Type Defines One  
+                        Behavior
+                    * By Encapsulating Behavior:
+                        * Modification Becomes Easier To Manage
+                        * Dependency (coupling) On Behavior Is Reduced
+                        * Cohesion Is Increased
+                </div>
+                <div class="markdown List" title="Pure Fabrication">
+                    ## Pure Fabrication
+                    * A Class That Does Not  
+                        Represent A Concept
+                    * Exists Purely For Low Coupling  
+                        And High Cohesion
+                        * Increases Maintainability
+                        * Makes Reuse Easier
+                </div>
+                <div class="markdown List" title="Indirection">
+                    ## Indirection
+                    * Decouple Related Objects By  
+                        Introducing A Mediator
+                        * An Intermediary Object
+                    * Communication Is Proxied
+                        * Promotes Loose Coupling
+                        * Promotes Reuse
+                </div>
+                <div class="markdown List" title="Protected Variations">
+                    ## Protected Variations
+                    * Wrap Instability In An Interface
+                        * Allows Polymorphic Variations
+                    * Instability Can Be:
+                        * Classes
+                        * Packages
+                        * Libraries
+                        * Systems
+                    * Adapter and Facade Patterns
                 </div>
                 <div class="solid Letters" title="SOLID">
                     <dl>
@@ -560,9 +720,20 @@
                     # Some Additional
                     # Patterns
                 </div>
-                <div class="markdown title" title="Static Coupling">
-                    # Static 
-                    # Coupling
+                <div class="markdown title" title="Deep Inheritance">
+                    # Deep
+                    # Inheritance
+                </div>
+                <div title="Inheritance">
+                    <img src="assets/images/inheritance.png" class="full" />
+                </div>
+                <div class="markdown List" title="Deep Inheritance 2">
+                    # Deep Inheritance
+                    * Adds Unnecessary Complexity
+                    * Tightly Couples Trees
+                    * A Form Of Static Coupling
+                    * Favor Composition  
+                        Over Inheritance
                 </div>
                 <div class="markdown title" title="Leaky Abstractions Title">
                     # Leaky
@@ -633,6 +804,21 @@
                 <div class="markdown title" title="Law of Demeter Title">
                     # Law of
                     # Demeter
+                </div>
+                <div title="Strangers">
+                    <img src="assets/images/strangers.jpg" class="full" />
+                </div>
+                <div class="markdown List" title="Law of Demeter">
+                    ## Law of Demeter
+                    ## Principle of Least Knowledge
+                    * Know As Little As Possible
+                    * Only Talk To Friends
+                        * Objects Closely Related To The Class
+                    * Reduces Dependencies
+                    * Benefits:
+                        * Maintainable Code
+                        * Reusable Code
+                        * Easy To Understand Code
                 </div>
                 <div class="markdown title" title="Real World Problems">
                     # Real World
@@ -731,14 +917,17 @@
                     # Is Not
                     # Good Enough
                 </div>
-                <div class="markdown title" title="Guidelines">
+                <div class="markdown title" title="Principles">
                     # These Are
-                    # Guidelines
+                    # Principles
                 </div>
-                <div class="markdown title" title="Violate">
-                    # Feel Free
-                    # To
-                    # Violate Them
+                <div class="markdown title" title="Bend">
+                    # You Can
+                    # Bend Them
+                </div>
+                <div class="markdown title" title="Break">
+                    # You Can
+                    # Break Them
                 </div>
                 <div class="markdown title" title="Understand">
                     # But 
@@ -746,9 +935,29 @@
                     # Them
                 </div>
                 <div class="markdown title" title="Know What You're Giving Up">
-                    # And Know What 
+                    # Know What 
                     # You're
                     # Giving Up
+                </div>
+                <div class="markdown title" title="Why">
+                    # And Understand
+                    # Why You're 
+                    # Giving It Up
+                </div>
+                <div class="markdown title" title="EOD">
+                    # At The End
+                    # Of The Day
+                </div>
+                <div class="markdown title" title="Working">
+                    # Working 
+                    # Is Better Than
+                    # Perfect
+                </div>
+                <div class="markdown quote" title="Consistency">
+                    ## A Foolish Consistency
+                    ## Is The Hobgoblin
+                    ## Of Little Minds
+                    ##### Ralph Waldo Emerson
                 </div>
                 <div class="markdown List comments" title="Comments">
                     1. Questions?

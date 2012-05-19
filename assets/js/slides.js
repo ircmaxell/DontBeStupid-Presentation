@@ -9,8 +9,9 @@
         return func;
     }
 
-    var Slide = function() {
+    var Slide = function(el) {
         $.extend(this, {
+            element: el,
             next: function() {
                 return false;
             },
@@ -18,48 +19,90 @@
                 return false;
             },
             resize: function() {
-            }
+            },
         });
     }
 
     var Slideshow = function(slides) {
         var currentPage = 1,
-        self = this,
-        pages = slides.length;
+            self = this,
+            callStack = [],
+            locked = false,
+            pages = slides.length;
         $('.pagination select').change(function(e) {
             self.goToPage(this.selectedIndex + 1);
         }).click(function(e) {
             e.preventDefault();
             e.stopPropagation();
         });
+        $.each(slides, function(key, slide) {
+            if (key != 0) {
+                $(slide.element).hide();
+            }
+        });
+
         $.extend(this, {
-            goToPage: function(page) {
-                if (page < 1 || page > pages) return;
-                var offset = -1 * $('div.slider div').width() * (page - 1);
-                $('div.slider').css('left', offset);
-                currentPage = page;
-                window.location.hash = currentPage;
-                $('.pagination select')[0].selectedIndex = currentPage - 1;
+            goToPage: function(page, isHashChange) {
+                if (locked && isHashChange) {
+                    return;
+                } else if (locked) {
+                    callStack.push(function() {
+                        self.goToPage(page);
+                    });
+                    return;
+                }
+                if (page < 1 || page > pages || page == currentPage) return;
+                locked = true;
+                var startOffset = 0;
+                var endOffset = 0;
+                if (currentPage > page) {
+                    startOffset = -1 * $('div.slider div').width();
+                    endOffset = 0;
+                } else {
+                    endOffset = -1 * $('div.slider div').width();
+                    startOffset = 0;
+                }
+                $('div.slider').css('left', startOffset);
+                $(slides[page - 1].element).show();
+                $('div.slider').animate({left: endOffset}, 1000, function() {
+                    $('div.slider').css('left', 0);
+                    $(slides[currentPage - 1].element).hide(); 
+                    currentPage = page;
+                    window.location.hash = currentPage;
+                    $('.pagination select')[0].selectedIndex = currentPage - 1;
+                    locked = false;
+                    if (callStack.length) callStack.shift()();
+                });
+                
             },
             next: function() {
+                if (locked) {
+                    callStack.push(function() {
+                        self.next();
+                    });
+                    return;
+                }
                 if (!slides[currentPage - 1].next()) {
                     this.goToPage(currentPage + 1);
                 }
             },
             prev: function() {
+                if (locked) {
+                    callStack.push(function() {
+                        self.prev();
+                    });
+                    return;
+                }
                 if (!slides[currentPage - 1].prev()) {
                     this.goToPage(currentPage - 1);
                 }
             },
             resize: function(width, height) {
                 $('div.slider').css({
-                    left:(-1 * width * (currentPage - 1))
+                    'width': $(slides[currentPage - 1].element).width() * 2
                 });
                 $.each(slides, function(idx, slide) { 
                     slide.resize(width, height);
-                });
-                $('div.slider').css({
-                    'width': width * pages
                 });
                 $('.pagination').css({
                     right: $(window).width() - $('div.window').offset().left - width
@@ -81,6 +124,7 @@
 
     slideClasses.List = inherit(function(el) {
         $.extend(this, {
+            element: el,
             count: $(el).find('li').length,
             currentItem: 0,
             element: el,
@@ -97,6 +141,7 @@
 
     slideClasses.Letters = inherit(function(el) {
         $.extend(this, {
+            element: el,
             count: $(el).find('dd.show').length,
             currentItem: 0,
             element: el,
@@ -122,6 +167,7 @@
         ctx.font = 'bold 55px Trebuchet,Georgia,Arial,sans-serif';
 
         $.extend(this, {
+            element: el,
             resize: function(width, height) {
                 var min = Math.min(width, height);
                 $(canvas).css({
@@ -312,9 +358,9 @@
                 ss.next();
             }
         }).swipeleft(function() {
-            ss.prev();
-        }).swiperight(function() {
             ss.next();
+        }).swiperight(function() {
+            ss.prev();
         }).resize(function() {
             var min = Math.min($(window).height() * 4/3, $(window).width());
             $('div.window, div.slider div').height(Math.floor(min * 3 / 4)).width(Math.floor(min));
@@ -323,7 +369,7 @@
             ss.resize(Math.floor(min), Math.floor(min * 3 / 4));
         }).hashchange(function() {
             if (document.location.hash != '' && document.location.hash != '#') {
-                ss.goToPage(parseInt(document.location.hash.replace('#', '')));
+                ss.goToPage(parseInt(document.location.hash.replace('#', '')), true);
             }
         }).resize().hashchange();
         $('code').addClass('prettyprint');

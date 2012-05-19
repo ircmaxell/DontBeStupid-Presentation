@@ -57,11 +57,6 @@ div.slider {
     width: auto;
     display: inline;
     white-space: nowrap;
-    -moz-transition: all 1s; 
-    -webkit-transition: all 1s;  
-    -ms-transition: all 1s;  
-    -o-transition: all 1s;  
-    transition: all 1s; 
 }
 
 h1 {
@@ -89,8 +84,10 @@ canvas#paradigms {
 div.title h1:first-of-type {
     padding-top: 1em;
 }
-
-div.title h5:first-of-type {
+div.quote h2:first-of-type {
+    padding-top: 3em;
+}
+div.title h5:first-of-type, div.quote h5:first-of-type {
     padding-top: 3em;
 }
 
@@ -140,13 +137,19 @@ div.slider div ul li {
     display:none;
     padding-top: .1em;
 }
+div.slider div ol {
+    padding-top: .25em;
+    list-style: decimal;
+    padding-left: 2em;
+    font-size: 2em;
+}
 div.slider div ul {
     padding-top: .25em;
     list-style: circle;
     padding-left: 2em;
     font-size: 2em;
 }
-div.slider div ul ul {
+div.slider div ul ul, div.slider div ul ol {
     padding-top: .25em;
     padding-left: 1em;
     font-size: .75em;
@@ -170,13 +173,16 @@ div.leak code {
     font-size: 0.8em;
 }
 
+div.slider div.comments ol {
+    list-style: none;
+}
 div.slider div.comments li {
     display:none;
     padding-top: .6em;
     padding-left: .1em;
     margin-left: auto;
     margin-right: auto;
-    font-size: 5em;
+    font-size: 2.2em;
 }
 
 div.slider div.credits h2 {
