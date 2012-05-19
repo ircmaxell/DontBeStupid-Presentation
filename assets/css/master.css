@@ -91,6 +91,10 @@ div.title h5:first-of-type, div.quote h5:first-of-type {
     padding-top: 3em;
 }
 
+div.title.quote h1 {
+    font-size: 3.2em;
+}
+
 div.title h5 {
     padding-right: 1em;
 }
